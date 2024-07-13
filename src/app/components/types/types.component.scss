@@ -1,0 +1,52 @@
+.icon-types {
+  background-image: url(https://assets.pokemon.com/static2/_ui/img/cards/energy-types.png);
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 0.5em 0 -0.5em;
+  vertical-align: middle;
+}
+
+.icon-grass {
+  background-position: -25px -50px;
+}
+
+.icon-fire {
+  background-position: 0px 0px;
+}
+
+.icon-lightning {
+  background-position: -50px -50px;
+}
+
+.icon-darkness {
+  background-position: 0px -50px;
+}
+
+.icon-fairy {
+  background-position: -50px 0px;
+}
+
+.icon-psychic {
+  background-position: -75px -25px;
+}
+
+.icon-metal {
+  background-position: -75px 0px;
+}
+
+.icon-dragon {
+  background-position: 0px -25px;
+}
+
+.icon-water {
+  background-position: -75px -50px;
+}
+
+.icon-fighting {
+  background-position: -50px -25px;
+}
+
+.icon-colorless {
+  background-position: -25px 0px;
+}

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Card } from '../models/card';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +11,15 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  getCards(): Observable<any> {
-    return this.http.get<any>(this.apiURL);
+  getCards(): Observable<Card[]> {
+    return this.http
+      .get<any>(this.apiURL)
+      .pipe(map((result: any) => result.data));
   }
 
-  getCardByName(name: string): Observable<any> {
-    return this.http.get<any>(
-      `https://api.pokemontcg.io/v2/cards?q=name:${name}`
-    );
+  getCardByName(name: string): Observable<Card[]> {
+    return this.http
+      .get<Card[]>(`https://api.pokemontcg.io/v2/cards?q=name:${name}`)
+      .pipe(map((result: any) => result.data));
   }
 }

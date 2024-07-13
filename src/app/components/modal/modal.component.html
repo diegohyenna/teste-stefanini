@@ -1,0 +1,15 @@
+<div class="card" (click)="toggleModal($event)">
+  <ng-content select="[slot=show]"></ng-content>
+</div>
+
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-content relative" [@flipAnimation]>
+    <ng-content select="[slot=hide]"></ng-content>
+    <button
+      (click)="toggleModal($event)"
+      class="z-10 absolute rounded text-lg bg-white p-1 -right-2 -top-2"
+    >
+      <i class="bi bi-x-square-fill"></i>
+    </button>
+  </div>
+</div>

@@ -5,9 +5,14 @@ import { DeckDetailComponent } from './components/deck-detail/deck-detail.compon
 import { DeckFormComponent } from './components/deck-form/deck-form.component';
 
 const routes: Routes = [
-  { path: '', component: DeckListComponent },
-  { path: 'deck/:id', component: DeckDetailComponent },
-  { path: 'create', component: DeckFormComponent },
+  {
+    path: '',
+    redirectTo: 'decks',
+    pathMatch: 'full',
+  },
+  { path: 'decks', component: DeckListComponent, pathMatch: 'full' },
+  { path: 'deck/create', component: DeckFormComponent, pathMatch: 'full' },
+  { path: 'deck/:id', component: DeckDetailComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '' },
 ];
 
