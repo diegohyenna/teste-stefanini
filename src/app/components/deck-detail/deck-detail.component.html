@@ -36,13 +36,11 @@
     class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
   >
     <app-modal *ngFor="let card of deck?.cards; let i = index">
-      <div slot="show">
+      <div slot="show" class="text-center">
         <img [src]="card.images.small" alt="{{ card.name }}" class="mx-auto" />
-        <h3 class="font-bold text-lg">{{ card.name }}</h3>
-
         <button
           type="button"
-          class="text-2xl text-orange-500"
+          class="mt-2 text-2xl text-orange-500"
           (click)="removeCard($event, i)"
         >
           <i class="bi bi-trash"></i>
@@ -53,9 +51,10 @@
         <div
           class="mt-2 p-1 text-gray-700 rounded-lg bg-gray-100 hover:bg-gray-100 group hover:shadow"
         >
-          <p>Número: {{ card.number }}</p>
-          <h3 class="font-bold text-lg">Nome: {{ card.name }}</h3>
-          <p>HP: {{ card.hp }}</p>
+          <p><strong class="font-bold">ID:</strong> {{ card.id }}</p>
+          <p><strong class="font-bold">Nome:</strong> {{ card.name }}</p>
+          <p><strong class="font-bold">HP:</strong> {{ card.hp }}</p>
+          <p><strong class="font-bold">Tipo:</strong> {{ card.types }}</p>
         </div>
         <button
           type="button"
