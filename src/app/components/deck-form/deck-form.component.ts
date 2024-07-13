@@ -5,6 +5,9 @@ import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
 import { DeckService } from 'src/app/services/deck.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { Modal } from 'flowbite';
+import type { ModalOptions, ModalInterface } from 'flowbite';
+import type { InstanceOptions } from 'flowbite';
 
 @Component({
   selector: 'app-deck-form',
@@ -18,6 +21,13 @@ export class DeckFormComponent implements OnInit {
   selectedCards: Card[] = [];
   loading = false;
 
+  $modalElement?: any;
+  modal: any;
+  instanceOptions: InstanceOptions = {
+    id: 'modal-cards',
+    override: true,
+  };
+
   constructor(
     private pokemonService: PokemonService,
     private deckService: DeckService,
@@ -27,6 +37,8 @@ export class DeckFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
+    this.$modalElement = document.querySelector('#modal-cards');
+    this.modal = new Modal(this.$modalElement, {}, this.instanceOptions);
     this.getCards();
   }
 
