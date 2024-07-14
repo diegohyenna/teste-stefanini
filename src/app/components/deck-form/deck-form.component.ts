@@ -8,6 +8,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { Modal } from 'flowbite';
 import type { ModalOptions, ModalInterface } from 'flowbite';
 import type { InstanceOptions } from 'flowbite';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-deck-form',
@@ -32,7 +33,8 @@ export class DeckFormComponent implements OnInit {
     private pokemonService: PokemonService,
     private deckService: DeckService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +81,13 @@ export class DeckFormComponent implements OnInit {
 
   saveDeck() {
     if (this.selectedCards.length >= 24 && this.selectedCards.length <= 60) {
-      if (!this.deckName) alert('O deck deve ter um nome!');
+      if (!this.deckName) {
+        this.alertService.setMessage({
+          type: 'danger',
+          message: 'Deve conter um nome para o baralho!',
+        });
+        return;
+      }
       const newDeck: Deck = {
         id: new Date().getTime().toString(),
         name: this.deckName,
@@ -87,9 +95,15 @@ export class DeckFormComponent implements OnInit {
       };
       this.deckService.addDeck(newDeck);
       this.router.navigate(['/']);
-      alert('Deck salvo com sucesso!');
+      this.alertService.setMessage({
+        type: 'success',
+        message: 'Deck salvo com sucesso!',
+      });
     } else {
-      alert('O baralho deve ter entre 24 e 60 cartas.');
+      this.alertService.setMessage({
+        type: 'warning',
+        message: 'O Deck deve ter no mínimo 24 cartas e no máximo 60!',
+      });
     }
   }
 

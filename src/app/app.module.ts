@@ -16,6 +16,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TypesComponent } from './components/types/types.component';
 import { TypesDirective } from './directives/types.directive';
+import { AlertComponent } from './components/alert/alert.component';
+import { AlertService } from './components/alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { TypesDirective } from './directives/types.directive';
     MenuComponent,
     TypesComponent,
     TypesDirective,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { TypesDirective } from './directives/types.directive';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [PokemonService, DeckService],
+  providers: [PokemonService, DeckService, AlertService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

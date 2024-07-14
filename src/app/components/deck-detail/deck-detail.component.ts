@@ -1,7 +1,11 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
 import { DeckService } from 'src/app/services/deck.service';
+
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-deck-detail',
@@ -17,7 +21,9 @@ export class DeckDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private deckService: DeckService
+    private deckService: DeckService,
+    private alertService: AlertService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +32,7 @@ export class DeckDetailComponent implements OnInit {
     if (deckId) {
       this.deckService.getDeckById(deckId).subscribe((data) => {
         this.deck = data;
-        this.countTypes(this.deck);
+        this.countTypes(data);
         this.types = this.eliminateDuplicates(this.types);
       });
     } else {
@@ -36,13 +42,14 @@ export class DeckDetailComponent implements OnInit {
 
   countTypes(deck?: Deck) {
     if (!deck) return;
-    deck.cards.forEach((card: any) => {
-      if (card.supertype === 'Pokémon') {
+    deck.cards.forEach((card: Card) => {
+      if (card.supertype == 'Pokémon') {
         this.pokemonCount++;
-      } else if (card.supertype === 'Trainer') {
+      } else if (card.supertype == 'Trainer') {
         this.trainerCount++;
       }
-      this.types.push(...card.types);
+
+      if (card.types) this.types.push(...card.types);
     });
   }
 
@@ -67,12 +74,22 @@ export class DeckDetailComponent implements OnInit {
   saveDeck(deck?: Deck) {
     if (deck) {
       if (deck.cards.length < 24) {
-        alert('Não pode salvar um deck com menos de 24 cartas!');
+        this.alertService.setMessage({
+          type: 'warning',
+          message: 'Não pode salvar um deck com menos de 24 cartas!',
+        });
         return;
       }
 
       this.deckService.updateDeck(deck);
-      alert('Deck salvo com sucesso!');
+      this.alertService.setMessage({
+        type: 'success',
+        message: 'Deck salvo com sucesso!',
+      });
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

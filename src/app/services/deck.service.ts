@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Deck } from '../models/deck';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class DeckService {
     return this.http.get<any>(`${this.url}`);
   }
 
-  getDeckById(idDeck: string) {
+  getDeckById(idDeck: string): Observable<Deck> {
     return this.http.get<any>(`${this.url}/${idDeck}`);
   }
 
