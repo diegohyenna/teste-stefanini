@@ -14,6 +14,7 @@ import { AlertService } from '../alert/alert.service';
 })
 export class DeckDetailComponent implements OnInit {
   deck?: Deck;
+  deckId: string | null = '';
   pokemonCount = 0;
   trainerCount = 0;
   types: string[] = [];
@@ -27,16 +28,19 @@ export class DeckDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const deckId = this.route.snapshot.paramMap.get('id');
-    // this.deck = this.deckService.getDecks().find((d: any) => d.id === deckId);
-    if (deckId) {
-      this.deckService.getDeckById(deckId).subscribe((data) => {
-        this.deck = data;
-        this.countTypes(data);
-        this.types = this.eliminateDuplicates(this.types);
-      });
+    this.deckId = this.route.snapshot.paramMap.get('id');
+    if (this.deckId) {
+      this.getDeck(this.deckId);
     } else {
       this.router.navigate(['/']);
+    }
+  }
+
+  getDeck(deckId: string | null) {
+    if (deckId) {
+      this.deck = this.deckService.getDeckById(deckId);
+      this.countTypes(this.deck);
+      this.types = this.eliminateDuplicates(this.types);
     }
   }
 
@@ -55,38 +59,6 @@ export class DeckDetailComponent implements OnInit {
 
   eliminateDuplicates(duplicates: string[]) {
     return [...new Set(duplicates)];
-  }
-
-  removeCard(event: MouseEvent, index: number) {
-    event.stopPropagation();
-    if (this.deck?.cards) {
-      this.deck.cards = this.deck.cards.filter(
-        (c: any, i: number) => i !== index
-      );
-      this.pokemonCount = 0;
-      this.trainerCount = 0;
-      this.types = [];
-      this.countTypes(this.deck);
-      this.types = this.eliminateDuplicates(this.types);
-    }
-  }
-
-  saveDeck(deck?: Deck) {
-    if (deck) {
-      if (deck.cards.length < 24) {
-        this.alertService.setMessage({
-          type: 'warning',
-          message: 'Não pode salvar um deck com menos de 24 cartas!',
-        });
-        return;
-      }
-
-      this.deckService.updateDeck(deck);
-      this.alertService.setMessage({
-        type: 'success',
-        message: 'Deck salvo com sucesso!',
-      });
-    }
   }
 
   goBack() {

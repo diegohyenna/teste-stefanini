@@ -36,13 +36,6 @@
     class="flex md:flex-row flex-col md:justify-between text-2xl font-bold mb-4"
   >
     Cartas selecionadas, total: {{ deck?.cards?.length }}
-
-    <button
-      class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-      (click)="saveDeck(this.deck)"
-    >
-      <i class="bi bi-download"></i> Salvar alterações
-    </button>
   </h1>
   <div
     class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
@@ -50,13 +43,6 @@
     <app-modal *ngFor="let card of deck?.cards; let i = index">
       <div slot="show" class="text-center">
         <img [src]="card.images.small" alt="{{ card.name }}" class="mx-auto" />
-        <button
-          type="button"
-          class="mt-2 text-2xl text-orange-500"
-          (click)="removeCard($event, i)"
-        >
-          <i class="bi bi-trash"></i>
-        </button>
       </div>
       <div slot="hide">
         <img [src]="card.images.small" alt="{{ card.name }}" class="mx-auto" />
@@ -68,13 +54,6 @@
           <p><strong class="font-bold">HP:</strong> {{ card.hp }}</p>
           <p><strong class="font-bold">Tipo:</strong> {{ card.types }}</p>
         </div>
-        <button
-          type="button"
-          class="mt-2 text-2xl text-orange-500"
-          (click)="removeCard($event, i)"
-        >
-          <i class="bi bi-trash"></i>
-        </button>
       </div>
     </app-modal>
   </div>
