@@ -22,6 +22,11 @@ Projeto de um teste prático para uma vaga de desenvolvedor frontend na stefanin
 
 - No terminal rode o comando `npm run test`
 
+## Obter estatisticas de Coverage
+
+- No terminal rode o comando `npm run test:cove`
+- Após o comando acima. no projeto raíz navegue para a pasta `coverage/teste-stefanini` e abra no navegador o arquivo: index.html
+
 ## Demonstração do projeto
 
 Acesse a demonstração [clicando aqui](http://teste-stefanini.web.app)
