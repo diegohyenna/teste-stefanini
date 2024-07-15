@@ -7,7 +7,6 @@ import { AlertService } from '../alert/alert.service';
 @Component({
   selector: 'app-deck-list',
   templateUrl: './deck-list.component.html',
-  // styleUrls: ['./deck-list.component.scss'],
 })
 export class DeckListComponent implements OnInit {
   decks: Deck[] = [];
@@ -18,12 +17,16 @@ export class DeckListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getDecks();
+  }
+
+  getDecks() {
     this.decks = this.deckService.getDecks();
   }
 
   removeDeck(deck: Deck) {
     this.deckService.removeDeck(deck);
-    this.decks = this.decks.filter((dc) => dc.id !== deck.id);
+    this.getDecks();
     this.alertService.setMessage({
       type: 'success',
       message: 'Deck excluido com sucesso!',

@@ -5,12 +5,9 @@ import { Card } from 'src/app/models/card';
 import { Deck } from 'src/app/models/deck';
 import { DeckService } from 'src/app/services/deck.service';
 
-import { AlertService } from '../alert/alert.service';
-
 @Component({
   selector: 'app-deck-detail',
   templateUrl: './deck-detail.component.html',
-  styleUrls: ['./deck-detail.component.scss'],
 })
 export class DeckDetailComponent implements OnInit {
   deck?: Deck;
@@ -20,10 +17,9 @@ export class DeckDetailComponent implements OnInit {
   types: string[] = [];
 
   constructor(
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router,
     private deckService: DeckService,
-    private alertService: AlertService,
     private location: Location
   ) {}
 

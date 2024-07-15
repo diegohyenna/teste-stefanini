@@ -29,9 +29,12 @@ export class TypesDirective {
   setClass(type: string) {
     if (type) {
       type = type.toLowerCase();
-      let classe = this.Types[type];
-      this.el?.nativeElement?.classList.remove();
-      this.el?.nativeElement?.classList.add(classe);
+      let classe = this.Types[type] || null;
+      this.el?.nativeElement?.classList.forEach((classe: any) => {
+        if (classe != 'icon-types')
+          this.el?.nativeElement?.classList?.remove(classe);
+      });
+      if (classe) this.el?.nativeElement?.classList.add(classe);
     }
     return;
   }

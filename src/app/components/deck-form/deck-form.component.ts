@@ -14,7 +14,6 @@ import type { InstanceOptions } from 'flowbite';
 @Component({
   selector: 'app-deck-form',
   templateUrl: './deck-form.component.html',
-  // styleUrls: ['./deck-form.component.css'],
 })
 export class DeckFormComponent implements OnInit {
   deckName = '';

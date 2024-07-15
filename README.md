@@ -14,7 +14,7 @@ Projeto de um teste prático para uma vaga de desenvolvedor frontend na stefanin
 - Instale o nodejs versão 20+
 - Instale a cli do angular versão 16.2.14
 - Baixe o projeto desse repositório usando o comando `git clone https://github.com/diegohyenna/teste-stefanini.git`
-- Navegue até a pasta do projeto e rode o comando `npm install`
+- No terminal, navegue até a pasta do projeto e rode o comando `npm install`
 - Depois rode o comando `ng serve`
 - Abra o navegador no caminho [http://localhost:4200](http://localhost:4200)
 

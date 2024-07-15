@@ -26,11 +26,4 @@ export class DeckService {
   removeDeck(deck: Deck) {
     this.decks = this.decks.filter((d) => d !== deck);
   }
-
-  updateDeck(updatedDeck: Deck) {
-    const index = this.decks.findIndex((d) => d.id === updatedDeck.id);
-    if (index !== -1) {
-      this.decks[index] = updatedDeck;
-    }
-  }
 }
