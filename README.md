@@ -1,27 +1,27 @@
 # TesteStefanini
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+Projeto de um teste prático para uma vaga de desenvolvedor frontend na stefanini
 
-## Development server
+## Tecnologias usadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Angular CLI](https://github.com/angular/angular-cli) v16.2.14.
+- Typescript
+- Tailwind CSS
+- Flowbite
 
-## Code scaffolding
+## Rodar projeto localmente
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Instale o nodejs versão 20+
+- Instale a cli do angular versão 16.2.14
+- Baixe o projeto desse repositório usando o comando `git clone https://github.com/diegohyenna/teste-stefanini.git`
+- Navegue até a pasta do projeto e rode o comando `npm install`
+- Depois rode o comando `ng serve`
+- Abra o navegador no caminho [http://localhost:4200](http://localhost:4200)
 
-## Build
+## Rodando os testes unitários
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- No terminal rode o comando `npm run test`
 
-## Running unit tests
+## Demonstração do projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Acesse a demonstração [clicando aqui](http://teste-stefanini.web.app)
