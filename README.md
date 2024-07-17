@@ -29,4 +29,4 @@ Projeto de um teste prático para uma vaga de desenvolvedor frontend na stefanin
 
 ## Demonstração do projeto
 
-Acesse a demonstração [clicando aqui](http://teste-stefanini.web.app)
+Acesse a demonstração [clicando aqui](teste-stefanini.vercel.app)

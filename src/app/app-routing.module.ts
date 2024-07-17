@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'decks', component: DeckListComponent, pathMatch: 'full' },
   { path: 'deck/create', component: DeckFormComponent, pathMatch: 'full' },
   { path: 'deck/:id', component: DeckDetailComponent, pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'decks' },
 ];
 
 @NgModule({
